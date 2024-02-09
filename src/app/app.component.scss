@@ -1,0 +1,22 @@
+.main-container{
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  
+}
+.secondary-container{
+ width: 70vw;
+ border: 1px solid black;
+}
+@media screen and (max-width:1200px) {
+  .secondary-container{
+    width: 85vw;
+    padding: 10px;
+  }
+}
+@media screen and (max-width:700px) {
+  .secondary-container{
+    width: 90vw;
+  }
+}
