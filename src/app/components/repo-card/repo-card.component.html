@@ -1,0 +1,12 @@
+<div class="max-w-sm repo-card-width p-2 bg-white border overflow border-black">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-cyan-900 dark:text-white">{{repo.name|shorten:23}}</h5>
+    <p class="mb-3 text-gray-700 dark:text-gray-400">{{repo.description|shorten:90}}</p>
+    <div class="flex ">
+        <div class="rounded-lg bg-cyan-700 ml-1 flex text-white" *ngFor="let topic of repo.topics">
+            <span class="p-1">
+                 {{topic}}
+            </span>
+            
+        </div>
+    </div>
+</div>
