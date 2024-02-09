@@ -1,5 +1,88 @@
-<div class="grid h-screen place-items-center">
-  <div class="font-bold text-3xl">
-    Fyle Internship Challenge
+<div class="main-container">
+  <div class="secondary-container">
+    <!-- searchbar -->
+    <form class="m-9">
+      <svg
+        class="h-8 w-8 text-orange-600 animate-pulse"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+        />
+      </svg>
+      <label
+        for="default-search"
+        class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+        >Search</label
+      >
+      <div class="relative">
+        <div
+          class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
+        >
+          <svg
+            class="w-4 h-4 text-gray-500 dark:text-gray-400"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 20 20"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+            />
+          </svg>
+        </div>
+        <input
+          type="search"
+          [(ngModel)]="userName"
+          id="default-search"
+          class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="search by a Github username"
+          required
+          [ngModelOptions]="{ standalone: true }"
+        />
+        <button
+          (click)="searchHandeler()"
+          class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          Search
+        </button>
+      </div>
+    </form>
+
+    <div *ngIf="!datNotFound; else usernotfound">
+      <!-- header -->
+      <div *ngIf="headerLoading; else userDetails">
+        <app-header-skeleton />
+      </div>
+      <ng-template #userDetails>
+        <div *ngIf="search_header_results.name">
+          <app-header [userdetails]="search_header_results" />
+        </div>
+      </ng-template>
+      <!-- repo_data -->
+      <div *ngIf="repoLoading; else repoData">
+        <app-repos-skeleton />
+      </div>
+      <ng-template #repoData>
+        <div *ngIf="search_header_results.name">
+          <app-repos [repo_data]="repo_data" />
+        </div>
+      </ng-template>
+    </div>
+    <!-- no data found template -->
+    <ng-template #usernotfound>
+      <div class="flex justify-center bg-red-500">
+        <h1 class="text-white">No Data found</h1>
+      </div>
+    </ng-template>
   </div>
 </div>
