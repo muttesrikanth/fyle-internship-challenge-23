@@ -1,5 +1,12 @@
 # Fyle Frontend Challenge
 
+## Description
+The page features a Git icon along with a search bar. Users can input their search query into the search bar and click on the search button. If there are no matching users, a skeleton screen will briefly display to represent the zero state. However, if a user is found, their details along with repository data will be displayed.
+
+In the event that a user searches for special characters and there are no matches found, a message indicating "No user found" will be displayed below the search bar.
+
+For responsive design, Tailwind CSS and media queries have been utilized. Additionally, ngx-pagination has been implemented for pagination functionality.
+
 ## Install requirements
 * Install angular cli [Ref](https://angular.io/cli)
 * `npm install` in this repository 
